@@ -1,9 +1,14 @@
+import Banner from "@/components/Banner";
+import Features from "@/components/Features";
+import HowItWorks from "@/components/HowItWorks";
 import Image from "next/image";
 
 export default function Home() {
   return (
     <>
-      <h1 className="text-4xl font-bold">Welcome to My Landing Page</h1>
+      <Banner />
+      <Features />
+      <HowItWorks />
     </>
   );
 }
