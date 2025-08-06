@@ -1,51 +1,46 @@
 "use client";
-
 import authlogo from "@/public/authlogo.png";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Checkbox } from "@/components/ui/checkbox";
-import { Mail, Lock, Eye, EyeOff, ArrowLeft } from "lucide-react";
+import { Lock, Eye, EyeOff, ArrowLeft } from "lucide-react";
 import Link from "next/link";
-import { useState } from "react";
 import Image from "next/image";
+import { useState } from "react";
 
-export default function SignInForm() {
+export default function ResetPasswordForm() {
   const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
   return (
     <div className="flex min-h-screen items-center justify-center bg-white p-8">
       <div className="flex flex-col md:flex-row items-center justify-center gap-16 md:gap-32 max-w-5xl w-full">
         {/* Left Side - Backpack Icon Image */}
         <div className="flex-shrink-0">
-          <Image src={authlogo} alt="Backpack Icon" priority />
+          <Image
+            src={authlogo || "/placeholder.svg"}
+            alt="Backpack Icon"
+            priority
+          />
         </div>
-
-        {/* Right Side - Sign In Form */}
+        {/* Right Side - Reset Password Form */}
         <div className="w-full max-w-md space-y-8">
           {/* Header with Back Link */}
-          <div className="flex items-center gap-3 mb-8">
+          <div className="flex items-center gap-3 mb-4">
             <Link
-              href="/"
+              href="/verify-email" // Assuming a verify email page exists
               className="text-gray-600 hover:text-gray-900 flex items-center gap-3"
             >
               <ArrowLeft className="w-6 h-6" />
-              <h2 className="text-3xl font-extrabold text-gray-900">Sign In</h2>
+              <h2 className="text-3xl font-extrabold text-gray-900">
+                Reset Password
+              </h2>
             </Link>
           </div>
-
-          {/* Form Fields */}
+          <p className="text-gray-600 text-lg mb-6">
+            Your password must be 8-10 character long.
+          </p>
+          {/* Password Input with Toggle */}
           <div className="space-y-6">
-            {/* Email Input */}
-            <div className="relative">
-              <Mail className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-500" />
-              <Input
-                type="email"
-                placeholder="Enter your email"
-                className="pl-12 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-green-500 focus:border-green-500 text-lg"
-              />
-            </div>
-
-            {/* Password Input with Toggle */}
             <div className="relative">
               <Lock className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-500" />
               <Input
@@ -67,43 +62,35 @@ export default function SignInForm() {
                 )}
               </Button>
             </div>
-          </div>
-
-          {/* Checkbox and Forgot Password */}
-          <div className="flex items-center justify-between text-base">
-            <div className="flex items-center space-x-3">
-              <Checkbox id="remember-me" />
-              <label
-                htmlFor="remember-me"
-                className="text-gray-800 select-none"
+            {/* Re-enter Password Input with Toggle */}
+            <div className="relative">
+              <Lock className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-500" />
+              <Input
+                type={showConfirmPassword ? "text" : "password"}
+                placeholder="Re-enter Password"
+                className="pl-12 pr-12 py-3 border border-gray-300 rounded-lg focus:ring-green-500 focus:border-green-500 text-lg"
+              />
+              <Button
+                variant="ghost"
+                size="icon"
+                className="absolute right-3 top-1/2 -translate-y-1/2 h-8 w-8 text-gray-600 hover:bg-transparent"
+                onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                aria-label={
+                  showConfirmPassword ? "Hide password" : "Show password"
+                }
               >
-                Remember me
-              </label>
+                {showConfirmPassword ? (
+                  <EyeOff className="h-5 w-5" />
+                ) : (
+                  <Eye className="h-5 w-5" />
+                )}
+              </Button>
             </div>
-
-            <Link
-              href="/forgotpassword"
-              className="text-red-600 hover:underline font-semibold"
-            >
-              Forgot password?
-            </Link>
           </div>
-
-          {/* Sign In Button */}
+          {/* Confirm Button */}
           <Button className="w-full bg-[#2C6E3E] hover:bg-green-800 text-white py-4 rounded-lg font-semibold text-lg">
-            Sign In
+            Confirm
           </Button>
-
-          {/* Sign Up Link */}
-          <div className="text-center text-lg text-gray-800 ">
-            Don't have an account?{" "}
-            <Link
-              href="#"
-              className="text-red-600 hover:underline font-semibold"
-            >
-              Sign Up
-            </Link>
-          </div>
         </div>
       </div>
     </div>
