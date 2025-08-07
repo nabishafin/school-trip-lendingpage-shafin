@@ -25,7 +25,10 @@ export default function Footer() {
           <div className="space-y-4 text-center md:text-left">
             <h3 className="text-lg font-semibold text-gray-900">Unity Pages</h3>
             <nav className="flex flex-col space-y-2">
-              <Link className="text-gray-600 hover:text-gray-900" href="#">
+              <Link
+                className="text-gray-600 hover:text-gray-900"
+                href="/aboutus"
+              >
                 About Us
               </Link>
               <Link
@@ -34,7 +37,10 @@ export default function Footer() {
               >
                 Privacy Policy
               </Link>
-              <Link className="text-gray-600 hover:text-gray-900" href="#">
+              <Link
+                className="text-gray-600 hover:text-gray-900"
+                href="/termscondition"
+              >
                 Terms & Condition
               </Link>
             </nav>
