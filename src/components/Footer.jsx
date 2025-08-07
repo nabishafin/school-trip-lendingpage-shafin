@@ -3,10 +3,10 @@ import Link from "next/link";
 
 export default function Footer() {
   return (
-    <footer className="bg-gray-200 py-12 px-4">
+    <footer className="bg-gray-200 py-12 ">
       {/* Blue line at the top */}
       <div className="h-1 bg-blue-500 w-full absolute top-0 left-0" />
-      <div className="container mx-auto max-w-6xl">
+      <div className=" w-full md:w-10/12 mx-auto px-10">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12">
           {/* Left Section - App Description */}
           <div className="space-y-4 text-center md:text-left">
@@ -28,7 +28,10 @@ export default function Footer() {
               <Link className="text-gray-600 hover:text-gray-900" href="#">
                 About Us
               </Link>
-              <Link className="text-gray-600 hover:text-gray-900" href="#">
+              <Link
+                className="text-gray-600 hover:text-gray-900"
+                href="/privacypolicy"
+              >
                 Privacy Policy
               </Link>
               <Link className="text-gray-600 hover:text-gray-900" href="#">
